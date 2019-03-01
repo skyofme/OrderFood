@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	
+	<!-- 添加component注解的扫描 -->
+	<context:component-scan base-package="com.etc.entity,com.etc.bizImpl"></context:component-scan>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:db.properties</value>
+			</list>
+		</property>
+	 </bean>
+	
+	<!-- 配置数据源 -->
+	<bean id="dataSourse" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		 		 <!-- 初始化连接大小 -->  
+        <property name="initialSize" value="10" />  
+        <!-- 连接池最大使用连接数量 -->  
+        <property name="maxActive" value="50" />  
+        <!-- 连接池最小空闲 -->  
+        <property name="minIdle" value="6" />  
+        <!-- 获取连接最大等待时间 -->  
+        <property name="maxWait" value="60000" />  
+  
+        <!-- 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。 -->  
+        <!-- <property name="poolPreparedStatements" value="true" /> <property   
+            name="maxPoolPreparedStatementPerConnectionSize" value="33" /> -->  
+  
+        <!-- 验证数据库连接有效性，要求查询语句 -->  
+        <property name="validationQuery" value="SELECT 1" />  
+        <!-- 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。 -->  
+        <property name="testWhileIdle" value="true" />  
+        <!-- 申请连接时执行validationQuery检测连接是否有效，配置true会降低性能。 -->  
+        <property name="testOnBorrow" value="false" />  
+        <!-- 归还连接时执行validationQuery检测连接是否有效，配置true会降低性能 -->  
+        <property name="testOnReturn" value="false" />  
+  
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->  
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />  
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->  
+        <property name="minEvictableIdleTimeMillis" value="25200000" />  
+  
+        <!-- 对于长时间不使用的连接强制关闭 -->  
+        <property name="removeAbandoned" value="true" />  
+        <!-- 关闭超过30分钟的空闲连接，1800秒，也就是30分钟 -->  
+        <property name="removeAbandonedTimeout" value="1800" />  
+        <!-- 关闭abanded连接时输出错误日志 -->  
+        <property name="logAbandoned" value="true" />  
+  
+        <!-- 监控数据库 -->  
+        <!-- <property name="filters" value="mergeStat" /> -->  
+        <property name="filters" value="stat" />
+		 
+		
+		
+	</bean>
+	
+	<!-- 构建sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据源 -->
+		<property name="dataSource" ref="dataSourse"></property>
+		<!-- 加载mybatis的配置文件 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<!-- 数据源 -->
+		<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+		<!-- 分页所需的东西 -->
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageInterceptor">
+					<property name="properties">
+						<value>
+							helperDialect=postgresql
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property>
+	</bean>
+	<!-- dao接口所在的包，自动去扫描接口对应的mapper来创建实现类的代理对象 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 接口所在的包 -->
+		<property name="basePackage" value="com.etc.dao"></property>
+		<!-- 引入sqlSessionFactory -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+	
+	<!-- 配置事务管理器 -->
+	<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourse"></property>
+	</bean>
+	
+	<!-- 以注解的方式配置事务 -->
+	<tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
+
+	<!-- aop的配置 
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>-->
+</beans>

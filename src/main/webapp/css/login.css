@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+ *{margin:0;padding:0;}
+ div.box1{width:100%;height:950px;background:url('../img/login/1.jpg') no-repeat;background-size:100% 100%;}
+ div.box1 div.box2{width:1100px;height:420px;background-color:rgba(0,0,0,0);margin:auto;position:relative;}
+ div.box1 div.box2 form{width:340px;height:420px;background-color:#f5eae9;right:0;top:0;margin-top:50px;position: absolute;}
+ div.box1 div.box2 form .box3 ul{width:255px;height:240px;margin:30px auto 0;}
+ div.box1 div.box2 form .box3 ul li{list-style:none;}
+ div.box1 div.box2 form .box3 ul li input.wh{width:253px;height:38px;text-indent:52px;}
+ div.box1 div.box2 form .box3 ul li input.user{background:url('../img/login/2.jpg') no-repeat 0px -3px;}
+ div.box1 div.box2 form .box3 ul li #password{background:url('../img/login/3.jpg') no-repeat 0px -3px;}
+ div.box1 div.box2 form .box3 ul li input.bord{border:1px solid #ccc;}
+ div.box1 div.box2 form .box3 ul li input{margin-bottom:25px;}
+ div.box1 div.box2 form .box3 ul li p{display:inline;font-size:12px;margin:0 5px 5px;}
+ div.box1 div.box2 form .box3 ul li a{text-decoration:none;font-size:12px;color:#787878;margin:0 0 0 10px;}
+ div.box1 div.box2 form .box3 ul li a:hover{color:red;}
+ div.box1 div.box2 form .box3 ul li input.but{width:255px;height:44px;background:url('../img/login/4.jpg') no-repeat;border:none;}
+ div.box1 div.box2 form .box4{width:100%;padding-top:20px;border-top:1px dotted #787878;font-size:14px;text-align:center;position: absolute;}
+ div.box1 div.box2 form .box4 input{margin:5px 5px 0;}
+ .box4{position: absolute; top:360px;right:80px}

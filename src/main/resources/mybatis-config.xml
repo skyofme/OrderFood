@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射。 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<!-- 延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置fetchType属性来覆盖该项的开关状态。 -->
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<!-- 当开启时，任何方法的调用都会加载该对象的所有属性。否则，每个属性会按需加载（参考lazyLoadTriggerMethods). -->
+		<setting name="aggressiveLazyLoading" value="false"/>
+		<!-- 开启二级缓存，默认就是true，所以可以不用配置 -->
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+	<!-- 类型别名是为 Java 类型设置一个短的名字。它只和 XML 配置有关，存在的意义仅在于用来减少类完全限定名的冗余。 -->
+	<typeAliases>
+		<!-- <typeAlias type="com.etc.entity.User" alias="User"/> -->
+		<package name="com.etc.entity"/>
+	</typeAliases>
+	
+	
+    
+</configuration>

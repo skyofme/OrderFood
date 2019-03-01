@@ -1,0 +1,220 @@
+*{
+    font-family: Arial,'Liberation Sans',FreeSans,'Hiragino Sans GB','微软雅黑';
+}
+    .detail-center {
+
+    }
+    .w {
+        height: 576px;
+    }
+    .center-left {
+        float: left;
+        width: 500px;
+        position: relative;
+        /*border: 1px solid #ccc;*/
+    }
+    .big {
+        width: 450px;
+        height: 450px;
+        border: 1px solid #ccc;
+        position: relative;
+        cursor: move;
+        padding: 5px;
+        overflow: hidden;
+        text-align: center;
+    }
+    .big img {
+    	display: inline-block;
+    	width: 100%;
+    }
+    .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 500px;
+        height: 500px;
+        background: rgba(255,255,0,0.3);
+        display: none;
+    }
+    .big-div {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        top: 0;
+        left: 360px;
+        overflow:hidden;
+        display: none;
+        z-index: 10;
+    }
+    .left-small {
+        border: 1px solid #ccc;
+        width: 360px;
+        height: 70px;
+        margin: 20px auto;
+        position: relative;
+    }
+    .left-small ul {
+    	padding: 10px 50px 0 50px;
+    	
+    }
+    .left-small ul li {
+    	display: inline-block;
+        float: left;
+        margin-right: 2px;
+        width: 50px;
+        height: 50px;
+    }
+    .left-small ul li img {
+    	display: inline-block;
+    	width: 100%;
+    }
+    .detail_arrow_l,.detail_arrow_r {
+    	position: absolute;
+    	top: 50%;
+    	margin-top: -30px;
+    	width: 28px;
+    	height: 60px;
+    	text-align: center;
+    	font: 400 30px/60px "simsun";
+    	background-color: rgba(0,0,0,0.1);
+    	cursor: pointer;
+    }
+    .detail_arrow_l {
+    	left: 10px;
+    }
+    .detail_arrow_r {
+    	right: 10px;
+    }
+    .left-bottom {
+        height: 100px;
+        margin: 8px auto;
+        padding: 10px 10px;
+    }
+    .left-bottom a i {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+    }
+    .left-bottom-spirit {
+        background: url(../images/good_detail/sprite.png) no-repeat -44px -40px;
+    }
+    .left-bottom-spirit2 {
+        margin-left: 5px;
+        background: url(../images/good_detail/sprite.png) no-repeat -46px -24px;
+    }
+    .center-right {
+        float: left;
+        width: 600px;
+        height: 576px;
+        margin-left: 30px;
+        font-size: 20px;
+    }
+
+    /* right���� start*/
+    .center-right-left {
+        float: left;
+        width: 600px;
+    }
+    .brand {
+        height: 70px;
+        width: 570px;
+        padding: 15px;
+        font: 400 18px/30px "΢���ź�";
+        color: #666666;
+    }
+    .price {
+        height: 280px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    .span1,.span2,.span3,.span4 {
+        font: 400 16px/50px "΢���ź�";
+
+    }
+    .span11 {
+        font: 700 18px "simsun";
+        color: red;
+    }
+    .span11 i {
+        display: inline-block;
+        text-indent: 5px;
+        font-size: 24px;
+        margin-right: 10px;
+    }
+    .span22 {
+        font: 400 17px"simsun";
+
+    }
+    .span33 {
+        font: 400 17px "simsun";
+    }
+    .span44 {
+        font: 400 17px "simsun";
+    }
+    .address {
+        height: 70px;
+        padding: 10px 20px;
+    }
+    .shopping-car {
+        height: 80px;
+        padding: 10px 20px;
+        position: relative;
+    }
+    .amount {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        height: 40px;
+    }
+    .input {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+;       text-align: center;
+        font: 400 15px/30px "simsun";
+    }
+    .dec,.inc{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+    }
+    .add {
+        position: absolute;
+        top: 20px;
+        left: 180px;
+        width: 200px;
+        height: 60px;
+        background-color: red;
+        font: 700 20px/45px "simsun";
+        text-align: center;
+        color: white;
+    }
+    .center-right-right {
+        border: 1px solid #ccc;
+        float: right;
+        width: 210px;
+        height: 534px;
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+    .center-right-right span {
+        display: block;
+        margin: 10px 0;
+        font: 400 18px "simsun";
+    }
+    .center-right-right span:hover {
+    	cursor: pointer;
+    }
+    .center-right-right ul li{
+    	display: inline-block;
+        padding-left: 10px;
+        margin-bottom: 20px;
+        width: 150px;
+        height: 150px;
+    }
+	.center-right-right ul li img {
+		display: inline-block;
+		width: 100%;
+	}
+    /* right���� end*/

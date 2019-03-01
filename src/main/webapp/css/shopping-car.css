@@ -1,0 +1,187 @@
+*{
+	font-family: Arial,'Liberation Sans',FreeSans,'Hiragino Sans GB','΢���ź�';
+}
+.top-color {
+    position: relative;
+    font: 400 25px/55px "consolas";
+    padding-left: 200px;
+    color: white;
+    height: 55px;
+    background: url(../images/pay/seckill_hd.png) no-repeat;
+    background-color: #CF0414;
+}
+.top-color a{
+    color: white;
+}
+.top-color-one {
+    position: absolute;
+    right: 350px;
+    font-size: 18px;
+    line-height: 45px;
+}
+.top-color-two{
+    position: absolute;
+    right: 180px;
+    font-size: 18px;
+    line-height: 65px;
+}
+
+    .shopping-car-part {
+        padding: 10px 110px;
+        background-color: white;
+    }
+    .shopping-car-part select {
+        display: block;
+        height: 40px;
+        width: 120px;
+        font: 600 16px/40px "黑体";
+        margin: 20px 0;
+        padding-left: 10px;
+        background-color: #eeF4E8;
+        color: #666;
+    }
+    .type {
+        height: 42px;
+        border: 1px solid #ccc;
+        background-color: #e1e1e1;
+
+    }
+    .type ul {
+        height: 30px;
+        margin: 6px auto;
+        position: relative;
+    }
+    .type ul li{
+        display: inline-block;
+        float: left;
+        font: 400 14px/30px "microsoft yahei";
+    }
+    .type-li01 {
+        position: absolute;
+        left: 10px;
+    }
+    .type-li02 {
+        position: absolute;
+        left: 160px;
+    }
+    .type-li03 {
+        position: absolute;
+        left: 560px;
+    }
+    .type-li04 {
+        position: absolute;
+        left: 670px;
+    }
+    .type-li05 {
+        position: absolute;
+        left: 780px;;
+    }
+    .type-li06 {
+        position: absolute;
+        left: 900px;
+    }
+    .good table {
+        width: 988px;
+        margin-bottom: 100px;
+    }
+    .good table tr{
+        display: block;
+        width: 990px;
+        height: 100px;
+        padding: 20px 0;
+        border: 1px solid #ccc;
+        position: relative;
+        font: 400 14px/20px "微软雅黑";
+    }
+    .amount input {
+        width: 20px;
+        text-align: center;
+    }
+    .amount button {
+        width: 20px;
+    }
+    .td1 {
+        position: absolute;
+        left: 10px;
+        width: 10px;
+        bottom: 30px;
+    }
+    .td2 {
+        position: absolute;
+        left: 30px;
+        width: 70px;
+    }
+    .t2 img {
+        width: 70px;
+        height: 70px;
+        border: 1px solid #000;
+    }
+    .shopping-brand {
+        position: absolute;
+        left: 140px;
+        /*width: 230px;*/
+        height: 100px;
+        font: 400 14px/75px "微软雅黑";
+    }
+    .td4 {
+        position: absolute;
+        left: 560px;
+        font: 400 14px/75px "微软雅黑";
+    }
+    .td5 {
+        position: absolute;
+        left: 650px;
+        font: 400 14px/75px "微软雅黑";
+
+    }
+    .td6 {
+        position: absolute;
+        left: 770px;
+        font: 400 14px/75px "微软雅黑";
+
+    }
+    .td7 {
+        position: absolute;
+        left: 900px;
+        font: 400 14px/75px "微软雅黑";
+
+    }
+
+    .buy-buy-buy {
+        position: fixed;
+        bottom: 10px;
+        height: 50px;
+        width: 990px;
+        background-color: rgba(255,255,255,0.5);
+        font: 400 16px/40px "微软雅黑";
+    }
+    .buy-buy {
+        position: relative;
+    }
+    .shopping-car-amount {
+        position: absolute;
+        left: 20px;
+        display: inline-block;
+        width: 200px;
+    }
+    .shopping-car-money {
+        position: absolute;
+        left: 600px;
+        padding-left: 50px;
+        display: inline-block;
+        width: 200px;
+    }
+    .shopping-car-buy {
+        position: absolute;
+        left: 890px;
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+        background-color: red;
+        text-align: center;
+        font: 700 20px/50px "黑体";
+        color: #fff;
+    }
+
+
+

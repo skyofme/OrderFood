@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 保持接口的路径和mapper文件的namespace一致 -->
+<mapper namespace="com.etc.dao.OrderDao">
+
+	<!-- 查询订单表 -->
+	<select id="findAll" resultType="order">
+		select * from "order"."order" 
+	</select>
+	
+	<resultMap type="order" id="findoState">
+		<id column="o_id" property="oId"/>
+		<result column="o_state" property="oState"/>
+	</resultMap>
+	<!--根据id查订单  -->
+	<select id="findOrderByoId" resultMap="findoState">
+		select o.o_id,o.o_state ,o.o_date from "order"."order" o where o_id=#{o_id}
+	</select>
+	<resultMap type="order" id="findOrder">
+		<id column="o_id" property="oId"/>
+		<result column="o_date" property="oDate"/>
+		<result column="o_state" property="oState"/>
+		<result column="nums" property="nums"/>
+		<result column="prices" property="prices"/>
+		<association property="customer" javaType="Customer">
+			<id column="c_id" property="cId"/>
+			<result column="c_name" property="cName"/>
+		</association>
+		<collection property="orderdetail" ofType="orderdetail" >
+			<id column="od_id" property="odId"/>
+			<result column="m_id" property="mId"/>
+			<result column="m_count" property="mCount"/>
+			<association property="menu" javaType="Menu">
+				<id column="m_id" property="mId"/>
+				<result column="m_name" property="mName"/>
+				<result column="m_price" property="mPrice"/>
+				<result column="m_pictrue" property="mPicture"/>
+			</association>
+		</collection>
+	</resultMap>
+	<!--查询订单信息(订单序号，订单时间，订单状态(已付款),顾客姓名) -->
+	<select id="findOrderIsPay" resultMap="findOrder">
+	 	select * from (select o.o_id,o.o_date,o.o_state,c.c_name from "order"."order" o,"people"."customer" c where o.o_state='已付款' and c.c_id = o.c_id)a,(select  sum(a.m_count) nums,sum (a.m_count * a.m_price) prices from (select d.o_id,m.m_name,d.m_count,m.m_price from "order"."orderdetail" d,"food"."menu" m where d.m_id=m.m_id) a, (select o.o_id from "order"."order" o,"people"."customer" c where o.o_state='已付款' and c.c_id = o.c_id) b where a.o_id=b.o_id)b
+	</select>
+		<resultMap type="orderdetail" id="findOrderbyid">
+		<id column="od_id" property="odId"/>
+		<result column="m_count" property="mCount"/>
+		<association javaType="menu" property="menu">
+			<id column="m_id" property="mId"/>
+			<result column="m_name" property="mName"/>
+			<result column="m_price" property="mPrice"/>
+		</association>
+	</resultMap>
+	<!-- 查询订单详情信息（订单序号，菜名，价格，订购数量 -->	
+	<select id="findDetailByoId" resultMap="findOrderbyid">
+		select m.m_name,d.m_count,m.m_price from "order"."orderdetail" d,"food"."menu" m where d.m_id=m.m_id  and d.o_id = #{o_id}
+	</select>
+	
+	<!-- 修改订单的状态 -->
+	<update id="updateOrderState" >
+		update "order"."order" o set o_state = '已完成' where o_id = #{o_id}
+	</update>
+</mapper>

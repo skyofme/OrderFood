@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 保持接口的路径和mapper文件的namespace一致 -->
+<mapper namespace="com.etc.dao.LogDao">
+	<resultMap type="com.etc.entity.Log" id="alllog">
+		<id column="l_id" property="lId"/>
+		<result column="l_date" property="lDate"/>
+		<result column="l_content" property="lContent"/>
+		<association property="emp"  javaType="com.etc.entity.Employee">
+			<id column="e_id"   property="eId"></id>
+			<result column="e_name" property="eName"/>
+			<result column="e_pswd" property="ePswd"/>
+			<result column="e_phone" property="ePhone"/>
+			<association property="role" javaType="role">
+				<id  column="r_id" property="rId"/>
+				<result column="r_role" property="rRole"/>
+			</association>
+		</association>
+	</resultMap>
+	
+	<select id="findall" resultMap="alllog">
+		select l_id,l_date,l_content,l.e_id,e.e_name,r.r_role  from log.log l inner join people.employee e on l.e_id =e.e_id inner join 
+		people.role r on e.r_id=r.r_id where e.r_id  <![CDATA[!= ]]> 4
+		order by l_id desc
+	</select>
+	<select id="findbyid" resultMap="alllog">
+		select l_id,l_date,l_content,l.e_id,e.e_name,r.r_role  from log.log l inner join people.employee e on l.e_id =e.e_id inner join 
+		people.role r on e.r_id=r.r_id where l.e_id=#{id}
+		order by l_id desc
+	</select>
+	
+	
+</mapper>

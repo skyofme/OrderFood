@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 保持接口的路径和mapper文件的namespace一致 -->
+<mapper namespace="com.etc.dao.AdminMenuDao">
+	<resultMap type="menu" id="findall">
+		<id column="m_id"   property="mId"></id>
+		<result column="m_name" property="mName"/>
+		<result column="m_price" property="mPrice"/>
+		<result column="m_number" property="mNumber"/>
+		<result column="m_picture" property="mPicture" />
+		<association property="fk" javaType="foodKind">
+			<result column="fk_name" property="fkName"/>
+		</association>
+	</resultMap>
+	<select id="findAll" resultMap="findall">
+		select m.m_id,m.m_name,m.m_price,m.m_picture,m_number, f.fk_name from food.menu m inner join food.foodkind f on m.fk_id = f.fk_id order by m.m_id
+	</select>
+	
+	<select id="findById" resultMap="findall">
+		select m.m_id,m.m_name,m.m_price,m.m_picture,m_number,  f.fk_name from food.menu m inner join food.foodkind f on m.fk_id = f.fk_id
+		where m_id=#{id}
+	</select>
+	
+	<select id="findByName" resultMap="findall">
+		select m.m_id,m.m_name,m.m_price,m.m_picture,m_number,  f.fk_name from food.menu m inner join food.foodkind f on m.fk_id = f.fk_id
+		where m_name=#{name};
+	</select>
+	
+	<update id="update">
+	     update  food.menu set m_name = #{mName} ,m_price=#{mPrice} ,m_picture=#{mPicture},m_number =#{mNumber} ,fk_id=#{fk.fkId} where m_id=#{mId};	     
+	</update>
+	<insert id="add"  useGeneratedKeys="true" keyProperty="mId">
+		insert into food.menu(fk_id,m_name,m_price,m_number,m_picture) values(#{fk.fkId},#{mName},#{mPrice},#{mNumber},#{mPicture})
+	</insert>
+	<update id="sellout">
+		 update food.menu set m_number=0 where m_id=#{mId}
+	</update>
+	
+	<!--美食页只查询前五条  -->
+	<select id="findMeishi" resultMap="findall">
+		select * from food.menu where m_number>0
+	</select>
+		
+	<select id="findMeishiByType" resultMap="findall">
+		select m.m_id,m.m_name,m.m_price,m.m_number,m.m_picture,  f.fk_name  from food.menu m inner join food.foodkind f on f.fk_id = m.fk_id where f.fk_name = #{foodtypeName} and m.m_price>0   
+	</select> 
+	
+	<select id="searchFoodByName" resultMap="findall">
+		select m_id,m_name,m_price,m_picture from food.menu where m_name like concat(concat('%',#{foodname}),'%') and m_number>0
+	</select>
+	
+	<select id="findMeishiDetailByName" resultMap="findall">
+		select m_id,m_name,m_price,m_number,m_picture from food.menu where m_name = #{fname} 
+	</select>
+	
+	<insert id="addToShopCar">
+		insert into shopcar.shopcar(m_id,c_id,m_count) values((select m_id from food.menu where m_name=#{mName}),(select c_id from people.customer where c_name=#{cName}),#{mCount})
+	</insert>
+</mapper>

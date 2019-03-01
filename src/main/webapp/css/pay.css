@@ -1,0 +1,270 @@
+*{
+    font-family: Arial,'Liberation Sans',FreeSans,'Hiragino Sans GB','微软雅黑';
+}
+    .top-color {
+        position: relative;
+        font: 400 25px/55px "consolas";
+        padding-left: 200px;
+        color: white;
+        height: 55px;
+        background: url(../images/pay/seckill_hd.png) no-repeat;
+        background-color: #CF0414;
+    }
+    .top-color a{
+        color: white;
+    }
+    .top-color-one {
+        position: absolute;
+        right: 350px;
+        font-size: 18px;
+        line-height: 45px;
+    }
+    .top-color-two{
+        position: absolute;
+        right: 180px;
+        font-size: 18px;
+        line-height: 65px;
+    }
+    .pay-part {
+            padding: 30px 110px 0;
+            position: relative;
+            width: 990px;
+    }
+    /*state部分 start--------------------------------------------------------------------state部分 start*/
+    .process-text li, .process-img li {
+        display: inline-block;
+    }
+    .state {position: absolute;
+        margin-top: 10px;
+        right: 110px;
+        height: 54px;
+        width: 990px;
+    }
+    .process-text {
+        position: relative;
+    }
+    .process-text li {
+        position: absolute;
+        font: 400 14px/20px "黑体";
+        color: #888888;
+    }
+    .process-img li {
+        position: absolute;
+        width: 135px;
+        height: 34px;
+        top: 20px;
+        background: url(../images/shopping-car/sprite-buy.png) no-repeat ;
+    }
+    .process-text-li01 {
+        left: 392px;
+    }
+    .process-text-li02 {
+        left: 537px;
+    }
+    .process-text-li03 {
+        left: 685px;
+    }
+    .process-text-li04 {
+        right: 140px;
+    }
+    .process-text-li05 {
+        right: 20px;
+    }
+    .process-img .process-img-li01 {
+        left: 410px;
+        width: 85px;
+        background-position: -350px -204px;
+    }
+    .process-img .process-img-li02 {
+        left: 495px;
+        width: 135px;
+        height: 34px;
+        background-position: -300px -102px;
+    }
+    .process-img .process-img-li03 {
+        left: 630px;
+        background-position: -300px -102px;
+    }
+    .process-img .process-img-li04 {
+        left: 760px;
+        background-position: -300px -102px;
+    }
+    .process-img .process-img-li05 {
+        left: 894px;
+        width: 85px;
+        background-position: -300px -136px;
+    }
+    .process-img li i {
+        font: 600 16px/16px "微软雅黑";
+        color: white;
+    }
+    .process-img-li02 i, .process-img-li03 i, .process-img-li04 i, .process-img-li05 i {
+        position: absolute;
+        top: 9px;
+        left: 63px;
+    }
+    /*state部分 end--------------------------------------------------------------------state部分 end*/
+
+
+    /*address部分 start-----------------------------------------------------------------address部分 start*/
+    .address {
+        height: 160px;
+        width: 990px;
+    }
+    .address h1 {
+        font: 400 16px/30px "黑体";
+        padding-left: 10px;
+    }
+    .address div {
+        position: relative;
+        width: 237px;
+        height: 106px;
+        margin: 10px 50px;
+        background: url(../images/shopping-car/sprite_buy2.png) no-repeat;
+    }
+    .address div p {
+        padding: 12px 12px;
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .address div a {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        color: #CC9977;
+    }
+    .address div i {
+        position: absolute;
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        bottom: 1px;
+        right: 1px;
+        background: url(../images/shopping-car/sprite_confirm.png) no-repeat 0 -272px;
+    }
+    /*address部分 end--------------------------------------------------------------------address部分 end*/
+
+
+    /*confirm部分 start--------------------------------------------------------------------confirm部分 start*/
+    .confirm {
+        width: 990px;
+    }
+    td {
+        width: 200px;
+        height: 50px;
+        font: 400 14px/15px "微软雅黑";
+        padding: 10px 0;
+    }
+    .good-pay-inf {
+        position: relative;
+    }
+    .good-pay-inf h1{
+        font: 400 16px/20px "黑体";
+        color: #666;
+        margin-bottom: 50px;
+    }
+    .good-pay-inf i {
+        position: absolute;
+        top: 50px;
+        font: 400 15px/15px "黑体";
+    }
+    .pay-inf-ins1 {
+
+        left: 100px;
+    }
+    .pay-inf-ins2 {
+        left: 480px;
+    }
+    .pay-inf-ins3 {
+        left: 700px;
+    }
+    .pay-inf-ins4 {
+        left: 880px;
+    }
+    table tr td:nth-child(1){
+        width: 100px;
+        text-align: center;
+    }
+    table tr td:nth-child(2){
+        font: 400 14px/17px "黑体";
+        width: 250px;
+        text-align: center;
+    }
+    table tr td:nth-child(3){
+        width: 280px;
+        text-align: center;
+    }
+    table tr td:nth-child(4){
+        width: 180px;
+        text-align: center;
+    }
+    table tr td:nth-child(5){
+        width: 180px;
+        text-align: center;
+    }
+    table tr {
+        border-top: 1px dotted #ccc;
+        height: 50px;
+    }
+    table {
+        width: 100%;
+    }
+    .confirm-buy {
+        height: 165px;
+        width: 815px;
+        float: right;
+        font: 400 14px/18px "微软雅黑";
+        border: 2px solid #FF0036;
+    }
+    .buy-span1 {
+        float: right;
+        padding: 10px 40px 0 0;
+    }
+    .buy-span1 i {
+        font: 700 20px/30px "黑体";
+        color: #FF0036;
+    }
+    .buy-span2 {
+        position: relative;
+        height: 40px;
+    }
+    .buy-span2 span {
+        position: absolute;
+        top:50px;
+        left: 40px;
+        width: 100px;
+        height: 40px;
+    }
+    .buy-span2 p {
+        position: absolute;
+        top:50px;
+        left: 160px;
+        width: 400px;
+    }
+    .buy-span3 {
+        position: relative;
+    }
+    .buy-span3 span {
+        position: absolute;
+        left: 40px;
+        top: 100px;
+        width: 100px;
+    }
+    .buy-span3 p{
+        position: absolute;
+        top: 100px;
+        left: 160px;
+        width: 400px;
+    }
+    .buy-span4 {
+        float: right;
+        margin: 70px 10px 0 800px;
+        width: 200px;
+        height: 40px;
+        background-color: #FF0036;
+        color: white;
+        font: 700 20px/40px "黑体";
+        text-align: center;
+    }
+   
+    /*confirm部分 end--------------------------------------------------------------------confirm部分 end*/

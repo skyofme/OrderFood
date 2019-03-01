@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 保持接口的路径和mapper文件的namespace一致 -->
+<mapper namespace="com.etc.dao.CustomerDao">
+	
+		
+	<select id="findCustomer" resultType="Customer">
+		select * from people.customer where c_name =#{cName} and c_pswd =#{cPswd}
+	</select>
+	
+	<insert id="addCustomer" useGeneratedKeys="true" keyProperty="cId">
+		insert into people.customer(c_name,c_pswd,c_phone,c_email,c_address) values(#{cName},#{cPswd},#{cPhone},#{cEmail},#{cAddress})
+	</insert>
+	
+	<select id="findCustomerByName" resultType="Customer"> 
+		select * from people.customer where c_name = #{cName}
+	</select>
+	
+	<resultMap type="Employee" id="Employeeandro">
+		<id column="e_id" property="eId" />
+		<result column="e_name" property="eName"/>
+		<result column="e_pswd" property="ePswd"/>
+		<result column="e_phone" property="ePhone"/>
+		<association property="role" javaType="Role">
+			<id column="r_id" property="rId"/>
+			<result column="r_role" property="rRole"/>
+		</association>	
+	</resultMap>
+	<select id="findEmployee" resultMap="Employeeandro">
+		select * from people.employee e, people.role r where e.r_id = r.r_id and e.e_name=#{eName} and e.e_pswd=#{ePswd}
+	</select>
+	
+	<select id="findEmployeeById" resultMap="Employeeandro">
+		select * from people.employee e, people.role r where e.r_id = r.r_id and e.e_id=#{eId}
+	</select>
+	
+	<select id="findCustomerById" resultType="Customer">
+		select * from people.customer where c_id = #{cId}
+	</select>
+	
+	<update id="updateCustomer" useGeneratedKeys="true" keyProperty="cId">
+		update people.customer set c_pswd=#{cPswd},c_phone=#{cPhone},c_email=#{cEmail},c_address=#{cAddress} where c_id=#{cId}
+	</update>
+	
+	
+	<update id="updateEmployee">
+		update people.employee set e_pswd= #{ePswd},e_phone= #{ePhone} where e_id=#{eId};
+	</update>
+	
+	<resultMap type="order" id="reslutOrder">
+		<id column="o_id" property="oId"/>
+		<result column="o_date" property="oDate"/>
+		<result column="o_state" property="oState"/>
+		<result column="nums" property="nums"/>
+		<result column="prices" property="prices"/>
+		<association property="customer" javaType="Customer">
+			<id column="c_id" property="cId"/>
+			<result column="c_name" property="cName"/>
+		</association>
+		<collection property="orderdetail" ofType="orderdetail" >
+			<id column="od_id" property="odId"/>
+			
+			<result column="m_count" property="mCount"/>
+			<association property="menu" javaType="Menu">
+				<id column="m_id" property="mId"/>
+				<result column="m_name" property="mName"/>
+				<result column="m_price" property="mPrice"/>
+				<result column="m_pictrue" property="mPicture"/>
+			</association>
+		</collection>
+	</resultMap>
+	
+	<select id="showOrder" resultMap="reslutOrder">
+		select * from "order".order o LEFT JOIN "order".orderdetail d on o.o_id = d.o_id 
+		LEFT JOIN people.customer c on c.c_id=o.c_id
+		LEFT JOIN "food".menu m on d.m_id=m.m_id
+		where o.c_id=#{cId}
+	</select>
+	
+	<select id="showLittleOrder" resultType="Order">
+		select * from "order".order where c_id=#{cId}
+	</select>
+	
+	
+</mapper>

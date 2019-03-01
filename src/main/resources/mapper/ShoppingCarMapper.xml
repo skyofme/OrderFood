@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 保持接口的路径和mapper文件的namespace一致 -->
+<mapper namespace="com.etc.dao.ShoppingCarDao">
+	<resultMap id="mycar" type="com.etc.entity.ShoppingCar" >
+		<id column="s_id" property="sId"/>
+		<result column="m_count"  property="mCount"/>
+		<association property="menu" javaType="menu"> 
+			<id column="m_id"   property="mId"></id>
+			<result column="m_name" property="mName"/>
+			<result column="m_price" property="mPrice"/>
+			<result column="m_number" property="mNumber"/>
+			<result column="m_picture" property="mPicture" />
+			<association property="fk" javaType="foodKind">
+				<result column="fk_name" property="fkName"/>
+			</association>
+		</association>
+		<association property="cus" javaType="customer">
+			<id column="c_id"   property="cId"/>
+			<result column="c_name" property="cName"/>
+			<result column="c_pswd" property="cPswd"/>
+			<result column="c_phone" property="cPhone"/>
+			<result column="c_email" property="cEmail" />
+			<result column="c_address" property="cAddress" />
+		</association>		
+	</resultMap>
+	<select id="findbyid" resultMap="mycar">
+		select f.fk_name,m.m_picture,m.m_name,m.m_price ,s.m_count,m.m_id,s.c_id ,s.s_id from  shopcar.shopcar s inner join food.menu m on s.m_id = m.m_id inner join food.foodkind f on m.fk_id=f.fk_id 
+		inner join people.customer  c on c.c_id =s.c_id where s.c_id=#{id}
+	</select>
+	<update id="update" >
+		update shopcar.shopcar set m_count =#{mCount} where m_id=#{menu.mId} and c_id =#{cus.cId}
+	</update>
+	
+	<delete id="del">
+		delete from  shopcar.shopcar where s_id=#{id}
+	</delete>
+	
+	<delete id="paytodel">
+		delete from shopcar.shopcar where c_id=#{cus.cId} and m_id=#{menu.mId}
+	</delete>
+	
+	<insert id="addnopayorder" >
+		INSERT INTO "order".order(o_date, o_state, c_id)
+    VALUES ( #{o.oDate}, '未付款', #{o.customer.cId});
+  
+		INSERT INTO "order".orderdetail(o_id, m_id, m_count)
+    VALUES 
+    <foreach collection="list" item="od" separator=",">
+               ( (SELECT o_id  FROM "order".order where c_id =#{o.customer.cId} ORDER BY o_id DESC LIMIT 1), #{od.menu.mId}, #{od.mCount})
+     </foreach>
+	</insert>
+	
+	<select id="selectOid" resultType="int">
+		SELECT o_id  FROM "order".order where c_id =#{cId} ORDER BY o_id DESC LIMIT 1
+	</select>
+	
+	
+</mapper>

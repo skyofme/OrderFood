@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 保持接口的路径和mapper文件的namespace一致 -->
+<mapper namespace="com.etc.dao.EmpDao">
+	<resultMap type="employee" id="findall">
+		<id column="e_id"   property="eId"></id>
+		<result column="e_name" property="eName"/>
+		<result column="e_pswd" property="ePswd"/>
+		<result column="e_phone" property="ePhone"/>
+		<association property="role" javaType="role">
+			<id  column="r_id" property="rId"/>
+			<result column="r_role" property="rRole"/>
+		</association>
+	</resultMap>
+	
+	<select id="findAll" resultMap="findall">
+		select e_id,e_name,e_phone,e.r_id,r_role from people.employee e inner join people.role r on e.r_id =r.r_id order by e_id
+	</select>
+	<select id="updateEmp" resultMap="findall">
+		select e_id,e_name,e_phone,e.r_id,r_role from people.employee e inner join people.role r on e.r_id =r.r_id where e_id=#{eId}
+	</select>
+	
+	<update id="doUpdateEmp">
+		update people.employee set e_name= #{eName},e_phone= #{ePhone},r_id=#{role.rId} where e_id=#{eId};
+	</update>
+	
+	<delete id="deleteEmp">
+		delete from people.employee where e_id=#{eId}
+	</delete>
+	
+	<select id="findroles"  resultType="role">
+		select r_id,r_role from people.role 
+	
+	</select>
+	<select id="findrolebyid"  resultType="role">
+		select r_id,r_role from people.role where r_id=#{id}
+	
+	</select>
+	
+	
+	
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 保持接口的路径和mapper文件的namespace一致 -->
+<mapper namespace="com.etc.dao.FoodKindDao">
+	<resultMap type="com.etc.entity.FoodKind" id="selectone">
+		<id column="fk_id"  property="fkId"/>
+		<result  column="fk_name"  property="fkName"/>
+		<collection property="menus" ofType="menu">
+			<id column="m_id"   property="mId"></id>
+			<result column="m_name" property="mName"/>
+			<result column="m_price" property="mPrice"/>
+			<result column="m_number" property="mNumber"/>
+		
+		</collection>
+	
+	</resultMap>
+	<select id="select" resultType="com.etc.entity.FoodKind">
+		select * from food.foodkind
+	</select>
+	<select id="selectbykind"  resultType="Integer">
+		 SELECT COUNT(*) FROM food.foodkind WHERE fk_name=#{type}
+	</select>
+	<insert id="add">
+		INSERT INTO food.foodkind(
+             fk_name)
+    VALUES (#{type})
+	</insert>
+	<select id="selectfk"  resultMap="selectone">
+	   select fk_id,fk_name from food.foodkind where fk_name=#{type} 
+	
+	</select>
+	
+	<select id="selectkindfive" resultType="com.etc.entity.FoodKind">
+		select * from food.foodkind limit 5
+	</select>
+	
+
+</mapper>

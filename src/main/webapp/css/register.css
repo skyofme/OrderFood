@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+
+*{
+	margin:0;padding:0;
+	font-color: #888;
+}
+a {
+	text-decoration: none;
+	color: #888;
+	
+}
+/* #TABLE2{
+    position: absolute;
+    width:150px;
+    height:150px;
+    top:0%;
+    
+    
+}
+#TABLE2 tr
+{
+    height:67px;
+}
+#TABLE2 span{
+    display:none; 
+} */
+
+ div.box5 { width:200px; height:100px;}
+ #div1{ position:absolute; top:8px;left:8px; width:180px; height:80px; z-index:2px;background:url('../simg/register/6.jpg'); }
+ div.box6{position:absolute;margin-top:25px;left:250px; width:300px; height:80px;font-size:25px;}
+ div.box7{position:absolute;margin-top:40px;left:1100px; width:300px; height:80px;font-size:18px;}
+ div.box1 div.box2{width:1000px;height:420px;background-color:rgba(0,0,0,0);margin:auto;position:relative;}
+ div.box1 div.box2 form{width:700px;height:400px;background-color:#fff;position:absolute;right:-12px;top:0;margin-top:80px;}
+ div.box1 div.box2 form .box3 ul{height:35px;margin:10px auto 0;width:800px;}
+ div.box1 div.box2 form .box3 ul li{list-style:none;margin:9px auto 0;}
+ div.box1 div.box2 form .box3 ul li input.wh{width:320px;height:43px;text-indent:52px;font-size:18px;margin:8px;}
+ div.box1 div.box2 form .box3 ul li input.user{background:url('../img/register/7.jpg') no-repeat 0px center;}
+ div.box1 div.box2 form .box3 ul li #c_pswd{background:url('../img/register/3.jpg') no-repeat 0px center;}
+ div.box1 div.box2 form .box3 ul li #c_pswd2{background:url('../img/register/5.jpg') no-repeat 0px center;}
+ div.box1 div.box2 form .box3 ul li input.tel{background:url('../img/register/1.jpg') no-repeat 0px center;}
+ div.box1 div.box2 form .box3 ul li input.addr{background:url('../img/register/2.jpg') no-repeat 0px center;}
+ div.box1 div.box2 form .box3 ul li input.bord{border:1px solid #ccc;}
+ div.box1 div.box2 form .box3 ul li input{margin-bottom:20px;}
+ div.box1 div.box2 form .box3 ul li p{display:inline;font-size:12px;margin:0 5px 5px;}
+ .box3 ul li a{text-decoration:none;font-size:12px;color:#787878;margin:0 0 0 10px;}
+ div.box1 div.box2 form .box3 ul li a:hover{color:red;}
+ div.box1 div.box2 form .box3 ul li input.but{width:320px;height:43px;background:url('../img/register/4.jpg') no-repeat;border:none;margin-left:5px;}
+ div.box9{margin-top:230px;width:700px;height:30px;left:28%;position:absolute;font-size:11px;}
+ div.box10{margin-top:250px;width:500px;height:30px;left:39%;position:absolute;font-size:11px;color: #888;}
+ .add {
+    color:black !important;
+	margin:8 !important;
+ 	font-size: 14px !important;	
+ }
+ 
